@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+
+* {
+	margin : 0;
+	padding : 0;
+	font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+}
+
+a {
+    text-decoration: none;
+    color: #0858D3;
+}
+
+ul {
+	list-style: none;
+    padding-left: 0;
+}
+
+main {
+	width: 1000px;
+	margin: auto;   
+}
+
+.main {
+    width: 1000px;
+    margin: auto;
+}
+
+/*Menu Home*/
+header {
+	background : url('../img/info3.jpg') no-repeat top center;
+	background-size: cover;
+	height : 502px;
+	width : 100%;
+}
+
+
+header .p1 {
+	/*text-align: left;*/
+	color : white;
+	font-size : 55px;	
+	padding-top: 350px;
+	font-weight: bold;
+	
+}
+
+header .p2 {
+	/*text-align: left;*/
+	color : white;
+	font-size :35px;
+	margin-top : 30px;
+	font-weight: bold;
+}
+
+nav {
+   
+	width: 100%;
+	position: fixed;
+	top:0;
+	right:0;
+	background-color: white;
+}
+
+nav div {
+    display: flex;
+}
+
+#nav {
+	display: flex;
+	flex-direction: row;
+    
+}
+
+nav p a {
+	margin-top:20px;
+	/*float:left;*/
+}
+
+nav p {
+	width: 1300px;
+	margin:auto;
+}
+
+#nav li {
+	margin-left:40px;
+	padding-top: 20px;
+	padding-bottom: 20px;	
+}
+
+#nav a:hover {
+	color: red;
+	text-decoration: none;
+}
+
+a.imgAccueil:before {
+	content: url('../img/accueil.png');
+	margin-right:3px;
+}
+
+
+
+
+/*Home Page*/
+
+/*Section 1*/
+
+#Accueil {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#logo {
+	/*margin-left : 50px;*/
+	margin-top: 20px;
+}
+
+#coord {
+	/*margin-left : 200px;*/
+	margin-top : 100px;	
+}
+
+#btn {
+	margin-top : 100px;
+}
+
+.telecharger {
+	line-height: 20px;
+	background-color: #2CCB5A;
+	color : white;
+	/*margin-left : 150px;*/
+	padding: 20px;
+	border-radius : 10px;
+	height : 60px;
+	font-size : 15px;
+	width: 100px;
+}
+
+a.icone:before {
+	content : url('../img/icone.png');
+	margin-right: 3px;
+}
+
+
+
+/*Footer*/
+footer {
+    background-color: #7DFDFE;
+}
+
+footer .main {
+	display: flex;
+	justify-content: space-between;
+}
+
+footer .main div {
+	padding: 30px;
+}
+
+footer a,p {
+    color: black;
+    font-size: 15px;
+}
+
+h4 {
+	margin-bottom: 10px;
+}
+
+.social a {
+    display: inline-block;
+    text-align: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    line-height: 45px;
+    margin-right: 15px;
+}
+
+.home::before {
+    content: url('../img/maison.png');
+    position: relative;
+    top: 5px;
+    left: -3px;
+}
+
+.mail::before {
+    content: url('../img/enveloppe.png');
+    position: relative;
+    top: 5px;
+    left: -3px;
+}
+
+.mobile::before {
+    content: url('../img/tel.png');
+    position: relative;
+    top: 5px;
+    left: -3px;
+}
+
+.copyright {
+    text-align: center;
+}
+
+.copy {
+	background-color: #7DFDFE;
+	padding-bottom: 50px;
+}
+
+
