@@ -1,4 +1,4 @@
-<footer>
+<footer class="haut">
     <div class="main">
         <div>
             <h4>Nos réseaux sociaux</h4>
