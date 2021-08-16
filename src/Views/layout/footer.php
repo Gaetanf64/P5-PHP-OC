@@ -1,5 +1,5 @@
 <footer class="haut">
-    <div class="main">
+    <div class="container flex">
         <div>
             <h4>Nos réseaux sociaux</h4>
             <p class="haut social">
@@ -26,8 +26,8 @@
         </div>
 
     </div>
-</footer>
 
-<div class="copy">
-        <p class="copyright">Copyright 2021 - Site réalisé par Gaétan Fouillet - Projet OpenClassrooms</p>
-</div>
+    <div class="copy">
+        <p>Copyright 2021 - Site réalisé par Gaétan Fouillet - Projet OpenClassrooms</p>
+    </div>
+</footer>

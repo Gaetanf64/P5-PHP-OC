@@ -1,11 +1,11 @@
 <header>
     <nav>
-        <div class="main">
-            <p><a href="#Accueil" class="imgAccueil">GAETANFOUILLET.FR</a></p>
-            <ul id="nav">
-                <li><a href="#Accueil">Accueil</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">Contact</a></li> 
+        <div class="container flex">
+            <p><a href="./" class="imgAccueil">GAETANFOUILLET.FR</a></p>
+            <ul class="flex menu">
+                <li><a href="./">Accueil</a></li>
+                <li><a href="blog">Blog</a></li>
+                <li><a href="contact">Contact</a></li>
             </ul>
         </div>
     </nav>
