@@ -7,8 +7,19 @@ use App\Controllers\Home;
 use App\Controllers\Contact;
 use App\Controllers\Mail;
 
+
+
 // On génère une constante contenant le chemin vers la racine publique du projet
 define('ROOT', str_replace('index.php', "", $_SERVER['SCRIPT_FILENAME']));
+
+define('local', 'http://localhost/php/OC/blog/');
+
+// define(
+//     "HTTP",
+//     ($_SERVER["SERVER_NAME"] == "localhost")
+//         ? "http://localhost/your_work_folder/"
+//         : "http://your_site_name.com/"
+// );
 
 
 
@@ -30,22 +41,30 @@ if ($params[0] != "") {
     // On sauvegarde le 2ème paramètre dans $action si il existe, sinon index
     $action = isset($params[1]) ? $params[1] : 'index';
 
+    $class = "App\Controllers\\$controller";
+
+    //define('namespace', "App\Controllers\\$controller");
+    //var_dump(namespace);
+    //use namespace;
+
+
+
     // On appelle le contrôleur
-    require_once ROOT . 'src/Controllers/' . $controller . '.php';
-    var_dump($controller);
+    require_once(ROOT . 'src/Controllers/' . $controller . '.php');
+    //var_dump($controller);
     // On instancie le contrôleur
-    // $test = new $controller();
-    // var_dump($test);
+    $controller = new $class();
+
     // exit;
-    $controller = new Contact();
+    //$controller = new Contact();
 
     if (method_exists($controller, $action)) {
         unset($params[0]);
         unset($params[1]);
         call_user_func_array([$controller, $action], $params);
         // On appelle la méthode
-        /*$controller->$action();*/
-        $controller->index();
+        $controller->$action($params);
+        //$controller->index();
     } else {
         // On envoie le code réponse 404
         http_response_code(404);

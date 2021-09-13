@@ -11,6 +11,8 @@ class Home extends MainController
 
     public function index()
     {
+        //$this->is_User();
+
         $this->render('home/index', []);
     }
 }

@@ -3,9 +3,9 @@
         <div>
             <h4>Nos réseaux sociaux</h4>
             <p class="haut social">
-                <a href="https://fr-fr.facebook.com/" target="blank"><img src="public/img/facebook.png" alt="Facebook"></a>
-                <a href="https://www.instagram.com/?hl=fr" target="blank"><img src="public/img/linkedin.png" alt="Instagram"></a>
-                <a href="https://twitter.com/?lang=fr" target="blank"><img src="public/img/twitter.png" alt="Twitter"></a>
+                <a href="https://fr-fr.facebook.com/" target="blank"><img src=<?= local . "public/img/facebook.png" ?> alt="Facebook"></a>
+                <a href="https://www.instagram.com/?hl=fr" target="blank"><img src=<?= local . "public/img/linkedin.png" ?> alt="Instagram"></a>
+                <a href="https://twitter.com/?lang=fr" target="blank"><img src=<?= local . "public/img/twitter.png" ?> alt="Twitter"></a>
             </p>
         </div>
 
@@ -19,9 +19,9 @@
         <div>
             <h4>Liens</h4>
             <ul>
-                <li><a href="">Accueil</a></li>
-                <li><a href="">Blog</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href=<?= local . "./" ?>>Accueil</a></li>
+                <li><a href=<?= local . "blog" ?>>Blog</a></li>
+                <li><a href=<?= local . "contact" ?>>Contact</a></li>
             </ul>
         </div>
 

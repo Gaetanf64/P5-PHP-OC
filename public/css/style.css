@@ -42,6 +42,19 @@ h2 {
 	display: flex;
 }
 
+.contact {
+    padding-top: 80px;
+}
+
+.btn {
+	background-color: #2CCB5A;
+	color : white;
+	border-radius : 2px;
+	height: 40px;
+	font-size : 15px;
+	width: 100px;
+}
+
 
 
 
