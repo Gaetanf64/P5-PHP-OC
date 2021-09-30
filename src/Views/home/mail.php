@@ -15,48 +15,48 @@ $mail = new PHPMailer(true);
 
 
 
-if (!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['email']) && !empty($_POST['message'])) {
-    try {
-        //Configuration
-        //Je veux des infos de debug
-        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+// if (!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['email']) && !empty($_POST['message'])) {
+//     try {
+//         //Configuration
+//         //Je veux des infos de debug
+//         //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
-        //SMTP Configuration
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-        $mail->SMTPAuth   = true;                                 //Enable SMTP authentication
-        $mail->Username   = 'gaetan.fouillet@gmail.com';          //SMTP username
-        $mail->Password   = pass;                                 //SMTP password
-        $mail->SMTPSecure = "tls";                                //Enable implicit TLS encryption
-        $mail->Port       = 587;
+//         //SMTP Configuration
+//         $mail->isSMTP();
+//         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+//         $mail->SMTPAuth   = true;                                 //Enable SMTP authentication
+//         $mail->Username   = 'gaetan.fouillet@gmail.com';          //SMTP username
+//         $mail->Password   = pass;                                 //SMTP password
+//         $mail->SMTPSecure = "tls";                                //Enable implicit TLS encryption
+//         $mail->Port       = 587;
 
-        //Charset
-        $mail->Charset = "utf-8";
+//         //Charset
+//         $mail->Charset = "utf-8";
 
-        //Recipients
-        $mail->addAddress('gaetan.fouillet@gmail.com');
+//         //Recipients
+//         $mail->addAddress('gaetan.fouillet@gmail.com');
 
-        //Sender
-        $mail->setFrom('no-reply@site.fr', 'Formulaire de contact');
+//         //Sender
+//         $mail->setFrom('no-reply@site.fr', 'Formulaire de contact');
 
-        //Copy mail
-        $mail->addCC($_POST['email']);
+//         //Copy mail
+//         $mail->addCC($_POST['email']);
 
-        //Content
-        $mail->Subject = 'Formulaire de contact';
-        $mail->isHTML(true);
-        $mail->Body = '<p>De ' . $_POST['surname'] . ' ' . $_POST['firstname'] . '</p><p>' . $_POST['message'] . '</p>';
+//         //Content
+//         $mail->Subject = 'Formulaire de contact';
+//         $mail->isHTML(true);
+//         $mail->Body = '<p>De ' . $_POST['surname'] . ' ' . $_POST['firstname'] . '</p><p>' . $_POST['message'] . '</p>';
 
-        //Send mail
-        $mail->send();
+//         //Send mail
+//         $mail->send();
 
-        //header('location:./#form');
-        //echo "<p>Votre message a bien été envoyé</p>";
-        $valid = "<p class='haut'>Votre message a bien été envoyé</p>";
-    } catch (Exception $e) {
-        $error = "<p class='haut'>Message non envoyé. Veuillez recommencer</p>";
-    }
-};
+//         //header('location:./#form');
+//         //echo "<p>Votre message a bien été envoyé</p>";
+//         $valid = "<p class='haut'>Votre message a bien été envoyé</p>";
+//     } catch (Exception $e) {
+//         $error = "<p class='haut'>Message non envoyé. Veuillez recommencer</p>";
+//     }
+// };
 
 if (isset($_POST['forgotPassword'])) {
     try {

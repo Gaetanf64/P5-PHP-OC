@@ -1,9 +1,3 @@
-<?php //if ($_GET['success']) :
-if (isset($_SESSION['auth'])) : ?>
-    <h3>Connexion réussie !</h3>
-<?php endif ?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 

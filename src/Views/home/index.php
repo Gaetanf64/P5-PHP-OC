@@ -83,7 +83,7 @@
                     <li class="compet">Angular
                         <div id="bar-1" class="bar-main-container azure">
                             <div class="wrap">
-                                <div class="bar-percentage" data-percentage="40"></div>
+                                <div class="bar-percentage" data-percentage="20"></div>
                                 <div class="bar-container">
                                     <div class="bar"></div>
                                 </div>

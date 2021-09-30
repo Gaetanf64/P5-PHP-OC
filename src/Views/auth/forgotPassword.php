@@ -21,18 +21,17 @@
             <!--Login Section-->
             <h2 class="haut contact">Mot de passe oublié</h2>
 
-            <?php require_once(ROOT . 'src/Views/home/mail.php'); ?>
-            <form action="" method="POST">
+            <?php //require_once(ROOT . 'src/Views/home/mail.php'); 
+            ?>
+            <form action=<?= local . "mail/forgotPassword" ?> method="POST">
                 <input required type="email" name="emailPassword" placeholder="Email" class="input1" />
                 <button type="submit" name="forgotPassword" class="btn">Envoyer un mail</button>
-                <?php if (isset($valid)) {
-                    echo $valid;
-                }
-                if (isset($error)) {
-                    echo $error;
-                }
-                ?>
             </form>
+            <?php if (isset($_SESSION['erreur']) && ($_SESSION['erreur']) === 'error') :
+            ?>
+                <p>Email saisi n'existe pas. Veuillez recommencer</p>
+                <?php session_destroy() ?>
+            <?php endif ?>
 
         </div>
 

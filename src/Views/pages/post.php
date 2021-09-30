@@ -52,6 +52,15 @@
                     <p><a href=<?= local . "admin/deletePost/" . $post->getId_article() ?>>Supprimer l'article</a></p>
                 </section>
             <?php endif ?>
+
+            <?php if (isset($_SESSION['auth'])) : ?>
+                <form action="" method="post">
+                    <textarea required type="text" name="content_comment" placeholder="Ajouter un commentaire" rows="10" cols="40"></textarea>
+                    <input required type="hidden" name="id_user" placeholder="Id_user" value="<?= $_SESSION['id_user'] ?>" class="" />
+                    <input required type="hidden" name="id_article" placeholder="Id_article" value="<?= $post->getId_article() ?>" class="" />
+                    <button name="addComment" class="btn">Ajouter</button>
+                </form>
+            <?php endif ?>
         </div>
 
     </main>

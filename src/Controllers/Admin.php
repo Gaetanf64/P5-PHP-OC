@@ -20,25 +20,34 @@ class Admin extends MainController
 
         $this->render('admin/addPost');
 
-        $postManager = new PostManager();
+        //si le formualaire d'ajout est posté
+        if (!empty($_POST)) {
+            $postManager = new PostManager();
 
-        $now = new DateTime();
+            $now = new DateTime();
 
-        // Si le formulaire d'ajout du Post est posté
-        if (isset($_POST['btnAjouter'])) {
-            // crée un nouvel objet Post
-            // avec les valeurs recue en POST
-            $newPost = new Post();
-            $newPost->setTitle($_POST['title']);
-            $newPost->setChapo($_POST['chapo']);
-            $newPost->setContent($_POST['content']);
-            $newPost->setDate_creation($now->format('Y-m-d H:i:s'));
-            $newPost->setDate_update($now->format('Y-m-d H:i:s'));
-            $newPost->setId_user($_POST['id_user']);
+            // Si le formulaire d'ajout du Post est posté
+            if (isset($_POST['btnAjouter'])) {
+                // crée un nouvel objet Post
+                // avec les valeurs recue en POST
+                $newPost = new Post();
+                $newPost->setTitle(htmlspecialchars($_POST['title']));
+                $newPost->setChapo(htmlspecialchars($_POST['chapo']));
+                $newPost->setContent(htmlspecialchars($_POST['content']));
+                $newPost->setDate_creation($now->format('Y-m-d H:i:s'));
+                $newPost->setDate_update($now->format('Y-m-d H:i:s'));
+                $newPost->setId_user($_POST['id_user']);
+
+                $_POST = array(); //clear
 
 
-            $postManager->create($newPost);
-        };
+                $postManager->create($newPost);
+
+                return header('Location:' . local . 'blog');
+            } else {
+                $this->render('admin/addPost');
+            }
+        }
     }
 
     public function editPost($id_article)
@@ -49,24 +58,35 @@ class Admin extends MainController
 
         $postUpdate = $postManager->read($id_article);
 
-
-        $now = new DateTime();
-
-        // Si le formulaire d'ajout du Post est posté
-        if (isset($_POST['btnAjouter'])) {
-            // mise a jour de l' objet Post
-            // avec les valeurs recue en POST
-            //$postUpdate = new Post();
-            $postUpdate->setTitle($_POST['title']);
-            $postUpdate->setChapo($_POST['chapo']);
-            $postUpdate->setContent($_POST['content']);
-            $postUpdate->setDate_creation($now->format('Y-m-d H:i:s'));
-            $postUpdate->setDate_update($now->format('Y-m-d H:i:s'));
-            $postUpdate->setId_user($_POST['id_user']);
+        //si le formualaire d'ajout est posté
+        if (!empty($_POST)) {
 
 
-            $postManager->update($postUpdate);
-        };
+
+            $now = new DateTime();
+
+            // Si le formulaire d'ajout du Post est posté
+            if (isset($_POST['btnAjouter'])) {
+                // mise a jour de l' objet Post
+                // avec les valeurs recue en POST
+                //$postUpdate = new Post();
+                $postUpdate->setTitle(htmlspecialchars($_POST['title']));
+                $postUpdate->setChapo(htmlspecialchars($_POST['chapo']));
+                $postUpdate->setContent(htmlspecialchars($_POST['content']));
+                //$postUpdate->setDate_creation($now->format('Y-m-d H:i:s'));
+                $postUpdate->setDate_update($now->format('Y-m-d H:i:s'));
+                $postUpdate->setId_user($_POST['id_user']);
+
+
+                $postManager->update($postUpdate);
+
+                return header('Location:' . local . 'blog');
+            } else {
+                $this->render('admin/editPost');
+            }
+        }
+
+
 
         $this->render('admin/editPost', ['postUpdate' => $postUpdate]);
     }
@@ -82,7 +102,7 @@ class Admin extends MainController
         // exit;
         $postDelete->delete($post);
 
-        return header('Location: ' . local);
+        return header('Location:' . local . 'blog');
         //}
     }
 }

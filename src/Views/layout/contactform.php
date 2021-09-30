@@ -1,9 +1,10 @@
-<?php require_once(ROOT . 'src/Views/home/mail.php'); ?>
-<form id="form" method="post" action="./#form">
+<?php //require_once(ROOT . 'src/Views/home/mail.php'); 
+?>
+<form id="form" method="post" action=<?= local . "mail/sendMail" ?>>
     <input required type="text" name="surname" placeholder="Nom" class="input1" />
     <input required type="text" name="firstname" placeholder="Prenom" class="input1" />
     <input required type="email" name="email" placeholder="Adresse email" class="input1" />
-    <textarea required type="text" name="message" placeholder=" Votre message" rows="10" cols="40"></textarea>
+    <textarea required type="text" name="message" placeholder="Votre message" rows="10" cols="40"></textarea>
     <button class="btn">Envoyer</button>
     <?php if (isset($valid)) {
         echo $valid;

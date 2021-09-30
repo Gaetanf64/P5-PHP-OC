@@ -21,7 +21,7 @@
             <!--Login Section-->
             <h2 class="haut contact">Récupération du mot de passe</h2>
 
-            <form action=<?= local . "auth/loginPost" ?> method="POST">
+            <form action="" method="POST">
                 <input required type="password" name="newPassword" placeholder="Nouveau mot de passe" class="input1" />
                 <button type="submit" name="confirmer" class="btn">Confirmer</button>
             </form>

@@ -76,6 +76,32 @@ class Comment
         return $this;
     }
 
+    public function setId_user(Int $id_user)
+    {
+        if ($id_user > 0) {
+            $this->id_user = $id_user;
+        }
+        return $this;
+    }
+
+    public function setId_article(Int $id_article)
+    {
+        if ($id_article > 0) {
+            $this->id_article = $id_article;
+        }
+        return $this;
+    }
+
+    public function getId_article()
+    {
+        return $this->id_article;
+    }
+
+    public function getId_user()
+    {
+        return $this->id_user;
+    }
+
     public function getContent_comment()
     {
         return $this->content_comment;

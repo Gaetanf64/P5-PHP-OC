@@ -55,7 +55,7 @@ abstract class MainController
         //return header('Location: ' . local . 'auth/login');
         //}
     }
-
+    /*
     protected function is_User()
     {
         if (isset($_SESSION['auth']) && $_SESSION['auth'] === '0') {
@@ -64,5 +64,5 @@ abstract class MainController
         } else {
             return header('Location: ' . local . 'auth/login');
         }
-    }
+    }*/
 }

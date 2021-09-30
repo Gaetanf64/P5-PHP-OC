@@ -30,7 +30,7 @@ class CommentManager extends MainModel
     //     return $this->readOne('comment', 'App\Models\Comment', $id_comment);
     // }
 
-    public function readAll($id_article) //readById
+    public function readComment($id_article)
     {
         $this->setDb();
 
@@ -53,5 +53,28 @@ class CommentManager extends MainModel
         return $comments;
 
         $req->closeCursor();
+    }
+
+
+    public function addComment($comment)
+    {
+        $this->setDb();
+
+        $sql = "INSERT INTO comment (content_comment,is_actived,date_creation,date_update,id_user,id_article)
+        VALUES (:content_comment,:is_actived,:date_creation,:date_update,:id_user,:id_article)";
+
+        $req = $this->db->prepare($sql);
+        $req->bindValue('content_comment', $comment->getContent_comment(), PDO::PARAM_STR);
+        $req->bindValue('is_actived', 0, PDO::PARAM_STR);
+        $req->bindValue('date_creation', $comment->getDate_creation(), PDO::PARAM_STR);
+        $req->bindValue('date_update', $comment->getDate_update(), PDO::PARAM_STR);
+        $req->bindValue('id_user', $comment->getId_user(), PDO::PARAM_INT);
+        $req->bindValue('id_article', $comment->getId_article(), PDO::PARAM_INT);
+
+        $result = $req->execute();
+        if ($result) {
+            $id_comment = $this->db->lastInsertId();
+            $comment->setId_article($id_comment);
+        }
     }
 }

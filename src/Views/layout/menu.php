@@ -10,7 +10,7 @@
                     <li><a href=<?= local . "auth/login" ?>>Connexion</a></li>
                 <?php endif ?>
                 <?php if (isset($_SESSION['auth'])) : ?>
-                    <li><a href=<?= local . 'auth/profil' ?>>Mon Profil</a></li>
+                    <li><a href=<?= local . "auth/editProfil/" . $_SESSION['id_user'] ?>>Profil</a></li>
                     <li><a href=<?= local . 'auth/logout' ?>>Déconnexion</a></li>
                 <?php endif ?>
             </ul>

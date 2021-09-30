@@ -13,6 +13,7 @@ class User
     protected $date_creation;
     protected $date_update;
     protected $id_user;
+    protected $token;
 
 
     public function __construct($data = false)
@@ -25,12 +26,12 @@ class User
 
     public function setEmail(String $email)
     {
-        if (mb_strlen($email) > 50) {
-            $email = substr($email, 0, 50);
-        }
+        //     if (mb_strlen($email) > 50) {
+        //         $email = substr($email, 0, 50);
+        //     }
 
-        $email = strtolower($email);
-        $this->email = ucfirst($email);
+        //     $email = strtolower($email);
+        $this->email = $email;
         return $this;
     }
 
@@ -89,6 +90,19 @@ class User
         return $this;
     }
 
+    public function setToken($token)
+    {
+        /*if (mb_strlen($content) > 20) {
+            $content = substr($content, 0, 20);
+        }*/
+        if ($token !== NULL) {
+            $this->token = $token;
+            return $this->token;
+        }
+        //$is_admin = strtolower($is_admin);
+
+    }
+
 
     public function setId_user(Int $id_user)
     {
@@ -127,6 +141,11 @@ class User
     public function getDate_update()
     {
         return $this->date_update;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
     }
 
     public function getId_user()

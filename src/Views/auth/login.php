@@ -26,12 +26,22 @@
                 <input required type="password" name="password" placeholder="Mot de passe" class="input1" />
                 <button type="submit" class="btn">Se connecter</button>
             </form>
+            <?php
+            if (isset($_SESSION['erreur']) && ($_SESSION['erreur']) === 'error') :
+            ?>
+                <p>Mot de passe ou nom d'utilisateur invalide. Veuillez recommencer</p>
+                <?php session_destroy() ?>
+            <?php endif ?>
+
             <section>
-                <p><a href=<?= local ?>>Annuler</a></p>
+                <p><a href=<?= $_SERVER['HTTP_REFERER'] ?>>Annuler</a></p>
                 <p><a href=<?= local . "auth/forgotPassword" ?>>Mot de passe oublié ?</a></p>
+                <p><a href=<?= local . "auth/register" ?>>Pas encore inscrit ? Créer un compte gratuit</a></p>
             </section>
 
         </div>
+
+
 
     </main>
 
