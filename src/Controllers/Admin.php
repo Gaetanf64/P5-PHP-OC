@@ -36,7 +36,8 @@ class Admin extends MainController
                 $newPost->setContent(htmlspecialchars(filter_input(INPUT_POST, 'content')));
                 $newPost->setDate_creation($now->format('Y-m-d H:i:s'));
                 $newPost->setDate_update($now->format('Y-m-d H:i:s'));
-                $newPost->setId_user($_POST['id_user']);
+                $newPost->setId_user(filter_input(INPUT_POST, 'id_user'));
+
 
                 $_POST = array(); //clear
 
