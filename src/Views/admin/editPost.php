@@ -22,7 +22,7 @@
 
             <form action="" method="POST" class="flexC">
                 <label for="title">Titre</label>
-                <input required type="text" name="title" placeholder="Titre" value="<?= htmlspecialchars($postUpdate->getTitle()) ?>" class="input1" />
+                <input required type="text" name="title" placeholder="Titre" value="<?= htmlentities($postUpdate->getTitle()) ?>" class="input1" />
                 <label for="chapo">Chapo</label>
                 <textarea required type="text" name="chapo" placeholder="Chapo" cols="40" rows="30"><?= $postUpdate->getChapo() ?></textarea>
                 <label for="content">Contenu</label>
