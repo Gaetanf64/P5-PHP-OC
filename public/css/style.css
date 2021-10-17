@@ -29,6 +29,10 @@ main {
     margin: auto;
 }
 
+h1 {
+	font-size: 30px;
+}
+
 h2 {
 	font-size: 25px;
 	text-transform: uppercase;
@@ -40,6 +44,11 @@ h2 {
 
 .flex {
 	display: flex;
+}
+
+.flexC {
+	display: flex;
+	flex-direction: column;
 }
 
 .contact {
@@ -54,6 +63,56 @@ h2 {
 	font-size : 15px;
 	width: 100px;
 }
+
+.gras {
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.miHaut {
+    margin-top: 10px;
+}
+
+.date {
+    text-align: end;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.btnAdmin {
+    padding: 10px;
+    background-color: #2CCB5A;
+    color: white;
+    border-radius: 2px;
+}
+
+.input1 {
+	width: 100%;
+    margin-top: 15px;
+    border-radius: 2px;
+    padding: 8px;
+}
+
+textarea {
+	width: 100%;
+	margin-top: 15px;
+    border-radius: 2px;
+    padding: 8px;
+}
+
+.space {
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
 
 
 

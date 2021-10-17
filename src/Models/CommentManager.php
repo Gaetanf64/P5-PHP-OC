@@ -37,9 +37,9 @@ class CommentManager extends MainModel
         $comments = [];
         $req = $this->db->prepare(
             "SELECT *
-            FROM comment
-            WHERE id_article = :id_article
-            ORDER BY date_update DESC"
+            FROM comment,user
+            WHERE id_article = :id_article AND user.id_user = comment.id_user
+            ORDER BY comment.date_update DESC"
         );
         $req->bindValue('id_article', $id_article, PDO::PARAM_INT);
         $req->execute();
@@ -50,9 +50,25 @@ class CommentManager extends MainModel
             // comments contiendra les données sous forme d'objets
             $comments[] = new Comment($comment);
         }
+
         return $comments;
 
-        $req->closeCursor();
+        //$req->closeCursor();
+
+        // $this->setDb();
+
+        // $sql = "SELECT * FROM comment,user WHERE id_article = :id_article ORDER BY comment.date_update DESC";
+        // $req = $this->db->prepare($sql);
+        // $req->bindValue('id_article', $id_article, PDO::PARAM_INT);
+        // $req->execute();
+
+        // $data = $req->fetch(PDO::FETCH_ASSOC);
+        // $comments = new Comment($data);
+
+        // var_dump($comments);
+        // exit;
+
+        // return $comments;
     }
 
 
@@ -65,7 +81,7 @@ class CommentManager extends MainModel
 
         $req = $this->db->prepare($sql);
         $req->bindValue('content_comment', $comment->getContent_comment(), PDO::PARAM_STR);
-        $req->bindValue('is_actived', 0, PDO::PARAM_STR);
+        $req->bindValue('is_actived', 1, PDO::PARAM_STR);
         $req->bindValue('date_creation', $comment->getDate_creation(), PDO::PARAM_STR);
         $req->bindValue('date_update', $comment->getDate_update(), PDO::PARAM_STR);
         $req->bindValue('id_user', $comment->getId_user(), PDO::PARAM_INT);

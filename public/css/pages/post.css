@@ -1,0 +1,26 @@
+/*Post Page*/
+
+.comment {
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+
+
+.addCom {
+    background-color: #0858D3;
+    color : white;
+    border-radius : 2px;
+    height: 40px;
+    font-size : 15px;
+    width: 100px;
+    
+}
+
+
+
+.border {
+    border-bottom: 2px solid black;
+    padding-top: 10px;
+}
+

@@ -65,13 +65,4 @@ class Blog extends MainController
         // On envoie à la vue
         $this->render('pages/post', ['post' => $post, 'comments' => $comments]);
     }
-
-    /*
-    public function viewsAll()
-    {
-        $this->_postManager = new PostManager();
-        $articles = $this->_postManager->readAll();
-        // $this->_view = new View('Accueil');
-        //$this->_view->generate(array('articles' => $articles));
-    }*/
 }

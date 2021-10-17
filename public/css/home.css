@@ -48,17 +48,7 @@
 	margin-top : 100px;
 }
 
-.telecharger {
-	line-height: 20px;
-	background-color: #2CCB5A;
-	color : white;
-	/*margin-left : 150px;*/
-	padding: 20px;
-	border-radius : 10px;
-	height : 60px;
-	font-size : 15px;
-	width: 100px;
-}
+
 
 a.icone:before {
 	content : url('../img/icone.png');
@@ -163,20 +153,6 @@ a.icone:before {
 
 /*Contact Section*/
 
-.input1 {
-	width: 200px;
-    margin-top: 15px;
-    border-radius: 2px;
-    padding: 8px;
-}
-
-textarea {
-	width: 450px;
-	margin-top: 15px;
-    border-radius: 2px;
-    padding: 8px;
-}
-
 .btn {
 	background-color: #2CCB5A;
 	color : white;
@@ -192,4 +168,16 @@ iframe {
 
 .contact {
     padding-top: 80px;
+}
+
+.telecharger {
+	line-height: 20px;
+	background-color: #2CCB5A;
+	color : white;
+	/*margin-left : 150px;*/
+	padding: 20px;
+	border-radius : 10px;
+	height : 60px;
+	font-size : 15px;
+	width: 100px;
 }

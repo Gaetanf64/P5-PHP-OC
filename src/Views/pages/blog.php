@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/css/style.css" />
     <link rel="stylesheet" href="public/css/layout.css" />
-    <link rel="stylesheet" href="public/css/home.css" />
+    <link rel="stylesheet" href="public/css/pages/blog.css" />
     <title>Blog</title>
 
 <body>
@@ -19,29 +19,28 @@
 
 
             <!--Blog Section-->
-            <h2 class="haut contact">Blog</h2>
+            <h1 class="haut contact">Blog</h1>
 
-            <section class="haut flex">
+            <section class="haut">
                 <?php
                 foreach ($posts as $post) :
                 ?>
-                    <article>
-                        <h4><?= $post->getTitle() ?></h4>
-                        <h6><?= $post->getChapo() ?></h6>
+                    <article class="haut ligne">
+                        <h3><?= $post->getTitle() ?></h3>
+                        <h4 class="miHaut"><?= $post->getChapo() ?></h4>
                         <p><?= $post->getContent() ?></p>
-                        <p>Date de création : <?= $post->getDate_creation() ?></p>
-                        <p>Date de dernière mise à jour : <?= $post->getDate_update() ?></p>
-                        <a href="blog/post/<?= $post->getId_article() ?>">Lire la suite</a>
-                        <?php //$post->getId_user() 
-                        ?>
+                        <p class="haut italic">Ecrit par <?= $post->getUsername() ?></p>
+                        <p class="haut date"><span class="gras"> Date de création : </span><?= $post->getDate_creation() ?></p>
+                        <p class="date"><span class="gras"> Date de dernière mise à jour : </span><?= $post->getDate_update() ?></p>
+                        <a class="suite" href="blog/post/<?= $post->getId_article() ?>">Lire la suite</a>
                     </article>
-                    <!--'Ecrit par' => $post->getId_user()-->
-                <?php endforeach;
-                ?>
+                <?php endforeach; ?>
             </section>
+
+            <!--Admin Section-->
             <?php if (isset($_SESSION['auth']) && $_SESSION['auth'] === '1') : ?>
                 <section>
-                    <p><a href=<?= local . "admin/addPost" ?>>Ajouter un article</a></p>
+                    <p class="haut center"><a class="btnAdmin" href=<?= local . "admin/addPost" ?>>Ajouter un article</a></p>
                 </section>
             <?php endif ?>
         </div>

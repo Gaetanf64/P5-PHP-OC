@@ -19,9 +19,8 @@
 
         <!--Section Home-->
         <section class="fond">
-            <h1 class="p1 container">CV Gaétan Fouillet</p>
-                <p class="p2 container">Développeur d'application - PHP / Symfony
-            </h1>
+            <h1 class="p1 container">CV Gaétan Fouillet</h1>
+            <p class="p2 container">Développeur d'application - PHP / Symfony</p>
         </section>
 
 
@@ -142,7 +141,8 @@
             <h2 class="haut">Contactez-moi !</h2>
 
             <section class="haut flex">
-                <?php require_once ROOT . 'src/Views/layout/contactform.php'; ?>
+                <?php require_once ROOT . 'src/Views/layout/contactform.php';
+                ?>
             </section>
         </div>
 

@@ -1,0 +1,21 @@
+/*Admin Pages*/
+
+label {
+    margin-top: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.btnEdit {
+	background-color: #2CCB5A;
+	color : white;
+	border-radius : 2px;
+	height: 40px;
+	font-size : 20px;
+	width: 150px;
+}
+
+.adminH1 {
+    text-transform: uppercase;
+}

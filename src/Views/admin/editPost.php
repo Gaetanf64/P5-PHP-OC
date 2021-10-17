@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../public/css/style.css" />
     <link rel="stylesheet" href="../../public/css/layout.css" />
-    <!--<link rel="stylesheet" href="../public/css/home.css" />-->
+    <<link rel="stylesheet" href="../../public/css/admin.css" />
     <title>Editer un Article</title>
 </head>
 
@@ -17,13 +17,18 @@
 
     <main>
         <div class="container">
-            <h2 class="haut contact">Modifier un article</h2>
-            <form action="" method="POST">
-                <input required type="text" name="title" placeholder="Titre" value="<?= $postUpdate->getTitle() ?>" class="" />
-                <textarea required type="text" name="chapo" placeholder="Chapo" cols="40" rows="30" class=""><?= $postUpdate->getChapo() ?></textarea>
-                <textarea required type="text" name="content" placeholder="Contenu" cols="40" rows="30" class=""><?= $postUpdate->getContent() ?></textarea>
-                <input required type="hidden" name="id_user" placeholder="Id_user" value="<?= $postUpdate->getId_user() ?>" class="" />
-                <button class="btn" type="submit" name="btnAjouter">Modifier l'article</button>
+
+            <h1 class="haut contact adminH1">Modifier un article</h1>
+
+            <form action="" method="POST" class="flexC">
+                <label for="title">Titre</label>
+                <input required type="text" name="title" placeholder="Titre" value="<?= addslashes($postUpdate->getTitle()) ?>" class="input1" />
+                <label for="chapo">Chapo</label>
+                <textarea required type="text" name="chapo" placeholder="Chapo" cols="40" rows="30"><?= $postUpdate->getChapo() ?></textarea>
+                <label for="content">Contenu</label>
+                <textarea required type="text" name="content" placeholder="Contenu" cols="40" rows="30"><?= $postUpdate->getContent() ?></textarea>
+                <input required type="hidden" name="id_user" placeholder="Id_user" value="<?= $postUpdate->getId_user() ?>" />
+                <button class="btnEdit haut" type="submit" name="btnAjouter">Valider</button>
             </form>
         </div>
     </main>

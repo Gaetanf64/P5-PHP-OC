@@ -10,7 +10,7 @@ use App\Controllers\Mail;
 
 
 // On génère une constante contenant le chemin vers la racine publique du projet
-define('ROOT', str_replace('index.php', "", $_SERVER['SCRIPT_FILENAME']));
+define('ROOT', str_replace('index.php', "", isset($_SERVER['SCRIPT_FILENAME']) ? $_SERVER['SCRIPT_FILENAME'] : ""));
 
 define('local', 'http://localhost/php/OC/blog/');
 
@@ -29,7 +29,7 @@ define('local', 'http://localhost/php/OC/blog/');
 //require_once(ROOT.'Controllers/MainController.php');
 
 // On sépare les paramètres et on les met dans le tableau $params
-$params = explode('/', $_GET['p']);
+$params = explode('/', filter_input(INPUT_GET, 'p'));
 
 // Si au moins 1 paramètre existe
 if ($params[0] != "") {

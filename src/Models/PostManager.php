@@ -29,7 +29,7 @@ class PostManager extends MainModel
     {
         $this->setDb();
 
-        $sql = "SELECT * FROM post WHERE id_article = :id_article";
+        $sql = "SELECT * FROM post,user WHERE id_article = :id_article AND user.id_user = post.id_user";
         $req = $this->db->prepare($sql);
         $req->bindValue('id_article', $id_article, PDO::PARAM_INT);
         $req->execute();

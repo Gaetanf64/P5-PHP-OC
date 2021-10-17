@@ -65,6 +65,10 @@ class Mail extends MainController
                 //Send mail
                 $mail->send();
 
+                $_POST = array(); //clear
+
+
+
                 //header('location:./#form');
                 //echo "<p>Votre message a bien été envoyé</p>";
                 $valid = "<p class='haut'>Votre message a bien été envoyé</p>";
@@ -166,6 +170,8 @@ class Mail extends MainController
 
                     //Send mail
                     $mail->send();
+
+                    $_POST = array(); //clear
 
                     //header('location:./#form');
                     //echo "<p>Votre message a bien été envoyé</p>";

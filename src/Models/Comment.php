@@ -12,6 +12,8 @@ class Comment
     protected $date_update;
     protected $id_comment;
     protected $id_user;
+    protected $username;
+    protected $id_article;
 
 
     public function __construct($data = false)
@@ -90,6 +92,21 @@ class Comment
             $this->id_article = $id_article;
         }
         return $this;
+    }
+
+    public function setUsername(String $username)
+    {
+        // if ($id_user > 0) {
+        //     $this->id_user = $id_user;
+        // }
+        $this->username = $username;
+        return $this;
+    }
+
+
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     public function getId_article()

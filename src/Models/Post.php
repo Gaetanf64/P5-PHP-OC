@@ -13,7 +13,7 @@ class Post
     protected $date_update;
     protected $id_article;
     protected $id_user;
-    // protected $username; a faire
+    protected $username;
 
 
     public function __construct($data = false)
@@ -97,9 +97,23 @@ class Post
         return $this;
     }
 
+    public function setUsername(String $username)
+    {
+        // if ($id_user > 0) {
+        //     $this->id_user = $id_user;
+        // }
+        $this->username = $username;
+        return $this;
+    }
+
     public function getId_user()
     {
         return $this->id_user;
+    }
+
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     public function getTitle()
