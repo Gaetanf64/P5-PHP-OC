@@ -44,12 +44,12 @@ class Blog extends MainController
                 // crée un nouvel objet Post
                 // avec les valeurs recue en POST
                 $newComment = new Comment();
-                $newComment->setContent_comment(htmlspecialchars($_POST['content_comment']));
+                $newComment->setContent_comment(htmlspecialchars(filter_input(INPUT_POST, 'content_comment')));
                 //$newComment->setIs_actived($_POST['is_actived']);
                 $newComment->setDate_creation($now->format('Y-m-d H:i:s'));
                 $newComment->setDate_update($now->format('Y-m-d H:i:s'));
-                $newComment->setId_user($_POST['id_user']);
-                $newComment->setId_article($_POST['id_article']);
+                $newComment->setId_user(filter_input(INPUT_POST, 'id_user'));
+                $newComment->setId_article(filter_input(INPUT_POST, 'id_article'));
 
                 $_POST = array(); //clear
 

@@ -28,7 +28,7 @@ class Auth extends MainController
         // exit;
         //$user = new User();
         //$userManager->getByUsername($_POST['username']);
-        $user = $userManager->getByUsername($_POST['username']);
+        $user = $userManager->getByUsername(filter_input(INPUT_POST, 'username'));
 
         // var_dump($user['password']);
         // exit;
@@ -139,8 +139,8 @@ class Auth extends MainController
                         // crée un nouvel objet Post
                         // avec les valeurs recue en POST
                         $newUser = new User();
-                        $newUser->setEmail(htmlspecialchars($_POST['email']));
-                        $newUser->setUsername(htmlspecialchars($_POST['username']));
+                        $newUser->setEmail(htmlspecialchars(filter_input(INPUT_POST, 'email')));
+                        $newUser->setUsername(htmlspecialchars(filter_input(INPUT_POST, 'username')));
                         $newUser->setPassword($hash);
                         $newUser->setDate_creation($now->format('Y-m-d H:i:s'));
                         $newUser->setDate_update($now->format('Y-m-d H:i:s'));
@@ -186,8 +186,8 @@ class Auth extends MainController
                 //$postUpdate = new Post();
                 //$hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-                $userUpdate->setEmail(htmlspecialchars($_POST['email']));
-                $userUpdate->setUsername(htmlspecialchars($_POST['username']));
+                $userUpdate->setEmail(htmlspecialchars(filter_input(INPUT_POST, 'email')));
+                $userUpdate->setUsername(htmlspecialchars(filter_input(INPUT_POST, 'username')));
                 //$userUpdate->setPassword($hash);
                 //$postUpdate->setDate_creation($now->format('Y-m-d H:i:s'));
                 $userUpdate->setDate_update($now->format('Y-m-d H:i:s'));

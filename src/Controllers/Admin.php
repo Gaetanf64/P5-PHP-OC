@@ -31,8 +31,8 @@ class Admin extends MainController
                 // crée un nouvel objet Post
                 // avec les valeurs recue en POST
                 $newPost = new Post();
-                $newPost->setTitle(htmlspecialchars($_POST['title']));
-                $newPost->setChapo(htmlspecialchars($_POST['chapo']));
+                $newPost->setTitle(htmlspecialchars(filter_input(INPUT_POST, 'title')));
+                $newPost->setChapo(htmlspecialchars(filter_input(INPUT_POST, 'chapo')));
                 $newPost->setContent(htmlspecialchars(filter_input(INPUT_POST, 'content')));
                 $newPost->setDate_creation($now->format('Y-m-d H:i:s'));
                 $newPost->setDate_update($now->format('Y-m-d H:i:s'));
@@ -71,12 +71,12 @@ class Admin extends MainController
                 // mise a jour de l' objet Post
                 // avec les valeurs recue en POST
                 //$postUpdate = new Post();
-                $postUpdate->setTitle(htmlspecialchars($_POST['title']));
-                $postUpdate->setChapo(htmlspecialchars($_POST['chapo']));
-                $postUpdate->setContent(htmlspecialchars($_POST['content']));
+                $postUpdate->setTitle(htmlspecialchars(filter_input(INPUT_POST, 'title')));
+                $postUpdate->setChapo(htmlspecialchars(filter_input(INPUT_POST, 'chapo')));
+                $postUpdate->setContent(htmlspecialchars(filter_input(INPUT_POST, 'content')));
                 //$postUpdate->setDate_creation($now->format('Y-m-d H:i:s'));
                 $postUpdate->setDate_update($now->format('Y-m-d H:i:s'));
-                $postUpdate->setId_user($_POST['id_user']);
+                $postUpdate->setId_user(filter_input(INPUT_POST, 'id_user'));
 
 
                 $postManager->update($postUpdate);
