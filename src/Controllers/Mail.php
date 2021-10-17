@@ -30,7 +30,8 @@ class Mail extends MainController
         $mail = new PHPMailer(true);
 
 
-        if (!empty($_POST['surname']) && !empty($_POST['firstname']) && !empty($_POST['email']) && !empty($_POST['message'])) {
+        if (!empty(filter_input(INPUT_POST, 'surname')) && !empty(filter_input(INPUT_POST, 'firstname')) && !empty(filter_input(INPUT_POST, 'email')) && !empty(filter_input(INPUT_POST, 'message'))) {
+
             try {
                 //Configuration
                 //Je veux des infos de debug
@@ -55,12 +56,12 @@ class Mail extends MainController
                 $mail->setFrom('no-reply@site.fr', 'Formulaire de contact');
 
                 //Copy mail
-                $mail->addCC($_POST['email']);
+                $mail->addCC(filter_input(INPUT_POST, 'email'));
 
                 //Content
                 $mail->Subject = 'Formulaire de contact';
                 $mail->isHTML(true);
-                $mail->Body = '<p>De ' . $_POST['surname'] . ' ' . $_POST['firstname'] . '</p><p>' . $_POST['message'] . '</p>';
+                $mail->Body = '<p>De ' . filter_input(INPUT_POST, 'surname') . ' ' . filter_input(INPUT_POST, 'firstname') . '</p><p>' . filter_input(INPUT_POST, 'message') . '</p>';
 
                 //Send mail
                 $mail->send();
@@ -71,11 +72,11 @@ class Mail extends MainController
 
                 //header('location:./#form');
                 //echo "<p>Votre message a bien été envoyé</p>";
-                $valid = "<p class='haut'>Votre message a bien été envoyé</p>";
+                //$valid = "<p class='haut'>Votre message a bien été envoyé</p>";
 
                 return header('Location: ' . local);
             } catch (Exception $e) {
-                $error = "<p class='haut'>Message non envoyé. Veuillez recommencer</p>";
+                echo "<p class='haut'>Message non envoyé. Veuillez recommencer</p>";
             }
         }
     }
@@ -114,7 +115,7 @@ class Mail extends MainController
                 //Configuration
                 //Je veux des infos de debug
                 //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-                $email = $userManager->getByEmail($_POST['emailPassword']);
+                $email = $userManager->getByEmail(filter_input(INPUT_POST, 'emailPassword'));
 
                 if ($email === false) {
                     $_SESSION['erreur'] = 'error';
@@ -134,7 +135,7 @@ class Mail extends MainController
 
                     //$_POST = array(); //clear
 
-                    $userManager->forgotPassword($newUserPass, $_POST['emailPassword']);
+                    $userManager->forgotPassword($newUserPass, filter_input(INPUT_POST, 'emailPassword'));
 
 
                     // } else {
@@ -156,7 +157,7 @@ class Mail extends MainController
 
 
                     //Recipients
-                    $mail->addAddress($_POST['emailPassword']);
+                    $mail->addAddress(filter_input(INPUT_POST, 'emailPassword'));
 
                     //Sender
                     $mail->setFrom('no-reply@site.fr', 'Reintialisation mot de passe');

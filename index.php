@@ -10,7 +10,7 @@ use App\Controllers\Mail;
 
 
 // On génère une constante contenant le chemin vers la racine publique du projet
-define('ROOT', str_replace('index.php', "", isset($_SERVER['SCRIPT_FILENAME']) ? $_SERVER['SCRIPT_FILENAME'] : ""));
+define('ROOT', str_replace('index.php', '', filter_input(INPUT_SERVER, 'SCRIPT_FILENAME')));
 
 define('local', 'http://localhost/php/OC/blog/');
 
