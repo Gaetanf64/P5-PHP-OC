@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="public/css/style.css" />
     <link rel="stylesheet" href="public/css/layout.css" />
     <link rel="stylesheet" href="public/css/home.css" />
+    <link rel="icon" href="public/favicon.png" />
     <title>Accueil</title>
 </head>
 
