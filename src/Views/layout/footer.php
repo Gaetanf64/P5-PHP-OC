@@ -1,10 +1,10 @@
 <footer class="haut">
-    <div class="container flex">
+    <div class="container flex flexResponsive">
         <div>
             <h4>Nos réseaux sociaux</h4>
             <p class="haut social">
                 <a href="https://fr-fr.facebook.com/" target="blank"><img src=<?= local . "public/img/facebook.png" ?> alt="Facebook"></a>
-                <a href="https://www.instagram.com/?hl=fr" target="blank"><img src=<?= local . "public/img/linkedin.png" ?> alt="Instagram"></a>
+                <a href="https://www.linkedin.com/home/?originalSubdomain=fr" target="blank"><img src=<?= local . "public/img/linkedin.png" ?> alt="Linkedin"></a>
                 <a href="https://twitter.com/?lang=fr" target="blank"><img src=<?= local . "public/img/twitter.png" ?> alt="Twitter"></a>
             </p>
         </div>
@@ -31,3 +31,7 @@
         <p>Copyright 2021 - Site réalisé par Gaétan Fouillet - Projet OpenClassrooms</p>
     </div>
 </footer>
+
+</body>
+
+</html>

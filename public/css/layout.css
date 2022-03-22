@@ -106,3 +106,24 @@ h4 {
 	background-color: #7DFDFE;
 	padding-bottom: 50px;
 }
+
+.menuResponsive {
+    display: none;
+}
+
+
+@media all and (max-width: 820px) {
+    .noneResponsive {
+        display: none;
+    }
+}
+
+@media all and (max-width: 680px) {
+    .menuResponsive {
+        display: flex;
+    }
+
+    .menuNormal {
+        display: none;
+    }
+}

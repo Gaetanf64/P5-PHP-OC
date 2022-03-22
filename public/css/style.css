@@ -106,6 +106,26 @@ textarea {
     justify-content: space-between;
 }
 
+@media all and (max-width: 820px) {
+	.container {
+        width: 70%;
+		max-width: 70%;
+    }
+
+    .flexResponsive {
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
+
+@media all and (max-width: 680px) {
+    .container {
+        width: 80%;
+		max-width: 80%; 
+    }
+}
+
 
 
 

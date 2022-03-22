@@ -28,7 +28,7 @@
 
 /*Section Home 2*/
 
-#Accueil {
+.flexAccueil {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -37,6 +37,7 @@
 #logo {
 	/*margin-left : 50px;*/
 	margin-top: 20px;
+	border-radius: 100px;
 }
 
 #coord {
@@ -163,7 +164,7 @@ a.icone:before {
 }
 
 iframe {
-	margin-left: 20px;
+	margin-left: 30px;
 }
 
 .contact {
@@ -180,4 +181,41 @@ iframe {
 	height : 60px;
 	font-size : 15px;
 	width: 100px;
+}
+
+@media all and (max-width: 820px) {
+    
+	.fond .p2 {
+		font-size: 30px;
+	}
+
+	.flexAccueil {
+		flex-wrap: wrap;
+		width: 100%;
+	}
+
+	.bio article:after {
+		display: none;
+	}
+
+	iframe {
+		margin-left: 0;
+	}
+
+	
+}
+
+@media all and (max-width: 680px) {
+	iframe {
+		width: 90%;
+	}
+
+	.flexAccueil {
+		justify-content: center;
+	}
+
+	.fond .p2 {
+		font-size: 15px;
+		margin-top: 15px;
+	}
 }

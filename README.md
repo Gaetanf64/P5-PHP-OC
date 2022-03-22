@@ -78,12 +78,12 @@ L’écriture de ces tickets vous permettra de vous accorder sur un vocabulaire 
 
 ## Installation du projet 
 
-* Installer la base de données en l'important dans votre application Web de gestion de base de données
+* Installer la base de données db présent à la racine du dossier en l'important dans votre application Web de gestion de base de données
 * Cloner le projet avec gitclone
-* (installer les dépendances (phpmailer))
+* (installer les dépendances (phpmailer)) composer install
 * Redéfinir la constante dans index.php (présent à la racine du projet) avec le nouveau chemin du projet : 
 `define('local', 'http://localhost/php/OC/blog/')`
-* Pour les mails, changer l'adresse mail de récpetion et le mot de passe dans le controller Mail.php (si vous utlisez un autre host que gmail, entrez aussi les valeurs correspondants à votre host) :
+* Pour les mails, changer l'adresse mail de récpetion et le mot de passe dans le controller Mail.php (si vous utlisez un autre host que gmail, entrez aussi les valeurs correspondants à votre host) : env_sample mettre password et remettre env.php
 ```php
 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
