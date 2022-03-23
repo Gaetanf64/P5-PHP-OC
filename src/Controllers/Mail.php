@@ -30,7 +30,7 @@ class Mail extends MainController
         $mail = new PHPMailer(true);
 
 
-        if (!empty(filter_input(INPUT_POST, 'surname')) && !empty(filter_input(INPUT_POST, 'firstname')) && !empty(filter_input(INPUT_POST, 'email')) && !empty(filter_input(INPUT_POST, 'message'))) {
+        if (!empty($_POST['surname']) && !empty(filter_input(INPUT_POST, 'firstname')) && !empty(filter_input(INPUT_POST, 'email')) && !empty(filter_input(INPUT_POST, 'message'))) {
 
             try {
                 //Configuration
@@ -41,7 +41,7 @@ class Mail extends MainController
                 $mail->isSMTP();
                 $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                 //Enable SMTP authentication
-                $mail->Username   = 'gaetan.fouillet@gmail.com';          //SMTP username
+                $mail->Username   = username;                             //SMTP username
                 $mail->Password   = pass;                                 //SMTP password
                 $mail->SMTPSecure = "tls";                                //Enable implicit TLS encryption
                 $mail->Port       = 587;
@@ -50,7 +50,7 @@ class Mail extends MainController
                 $mail->Charset = "utf-8";
 
                 //Recipients
-                $mail->addAddress('gaetan.fouillet@gmail.com');
+                $mail->addAddress('gaetan.fouillet@greta-cfa-aquitaine.academy');
 
                 //Sender
                 $mail->setFrom('no-reply@site.fr', 'Formulaire de contact');
@@ -146,7 +146,7 @@ class Mail extends MainController
                     $mail->isSMTP();
                     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                                 //Enable SMTP authentication
-                    $mail->Username   = 'gaetan.fouillet@gmail.com';          //SMTP username
+                    $mail->Username   = username;                             //SMTP username
                     $mail->Password   = pass;                                 //SMTP password
                     $mail->SMTPSecure = "tls";                                //Enable implicit TLS encryption
                     $mail->Port       = 587;

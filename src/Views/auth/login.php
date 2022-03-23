@@ -24,7 +24,7 @@
 
         <section>
 
-            <div class="haut flex space">
+            <div class="haut flex space flexResponsive">
                 <p><a href=<?= local . "auth/forgotPassword" ?>>Mot de passe oublié ?</a></p>
                 <p><a href=<?= local . "auth/register" ?>>Pas encore inscrit ? Créer un compte gratuit</a></p>
             </div>

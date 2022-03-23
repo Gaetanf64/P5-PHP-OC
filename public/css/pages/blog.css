@@ -22,3 +22,13 @@ h4 {
     border-top: 2px solid black;
     padding-top: 20px;
 }
+
+@media all and (max-width: 820px) {
+
+}
+
+@media all and (max-width: 680px) {
+    .suite {
+        margin-top: 80px;
+    }
+}

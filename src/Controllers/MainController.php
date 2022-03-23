@@ -30,7 +30,7 @@ abstract class MainController
         extract($data);
 
         // On démarre le buffer de sortie
-        // ob_start();
+        ob_start();
 
         // // On génère la vue
         // /*require_once ROOT . 'src/Views/' . $fichier . '.php';*/
