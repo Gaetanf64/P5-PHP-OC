@@ -17,7 +17,7 @@
         <section>
             <article class="flexAccueil">
                 <p><a href="public/img/Gaetan.jpg" target="_blank"><img src="public/img/Gaetan.jpg" alt="Photo de profil" title="Cliquez pour agrandir" id="logo" /></a></p>
-                <p id="coord"> E-mail : gaetan.fouillet@gmail.com<br />Tél : 06.59.57.92.02</p>
+                <p id="coord"> E-mail : gaetan.fouillet@test.com<br />Tél : 06.33.33.33.33</p>
                 <p id="btn"><a class="telecharger icone" href="public/img/CV_GAETAN_FOUILLET.pdf">TELECHARGER MON CV</a></p>
             </article>
         </section>

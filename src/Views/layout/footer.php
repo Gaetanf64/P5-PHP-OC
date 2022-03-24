@@ -11,9 +11,9 @@
 
         <div>
             <h4>Nous contacter</h4>
-            <p class="home">50 avenue des Lilas, 64000 PAU</p>
+            <p class="home">50 rue de l'aviation, 64000 PAU</p>
             <p class="mail">gaetan.fouillet@gmail.com</p>
-            <p class="mobile">06 59 57 92 02</p>
+            <p class="mobile">06 33 33 33 33</p>
         </div>
 
         <div>
