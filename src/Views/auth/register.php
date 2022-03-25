@@ -28,8 +28,6 @@
             <?php session_destroy() ?>
         <?php endif ?>
 
-        <!-- <p class="haut droiteAnnuler"><a class="annuler" href=<?= local ?>>Retour à la page d'accueil</a></p> -->
-
     </div>
 
 </main>

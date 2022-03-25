@@ -3,21 +3,16 @@
 namespace App\Models;
 
 use PDO;
-//use App\Models\Post;
 
-//require_once ROOT . 'src/Models/Post.php';
 
 abstract class MainModel
 {
 
     protected $db;
-    /*
-    private static function setDb()
-    {
-        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
 
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-    }
+    /**
+     * On charge la db
+     * 
      */
     public function setDb()
     {

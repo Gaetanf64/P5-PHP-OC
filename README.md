@@ -80,17 +80,10 @@ L’écriture de ces tickets vous permettra de vous accorder sur un vocabulaire 
 
 * Installer la base de données db présent à la racine du dossier en l'important dans votre application Web de gestion de base de données
 * Cloner le projet avec gitclone
-* (installer les dépendances (phpmailer)) composer install
+```https://github.com/Gaetanf64/P5-PHP-OC.git```
+* Installer les dépendances 
+```composer install```
 * Redéfinir la constante dans index.php (présent à la racine du projet) avec le nouveau chemin du projet : 
-`define('local', 'http://localhost/php/OC/blog/')`
-* Pour les mails, changer l'adresse mail de récpetion et le mot de passe dans le controller Mail.php (si vous utlisez un autre host que gmail, entrez aussi les valeurs correspondants à votre host) : env_sample mettre password et remettre env.php
-```php
-$mail->isSMTP();
-                $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-                $mail->SMTPAuth   = true;                                 //Enable SMTP authentication
-                $mail->Username   = 'gaetan.fouillet@gmail.com';          //SMTP username
-                $mail->Password   = pass;                                 //SMTP password
-                $mail->SMTPSecure = "tls";                                //Enable implicit TLS encryption
-                $mail->Port       = 587;
-```
+```define('local', 'http://localhost/php/OC/blog/')```
+* Pour les mails, changer l'adresse mail de réception (username) et le mot de passe (pass) dans le .env_sample puis renommer le fichier en .env
 * Pour créer un nouvel administrateur : créer vous un compte utilisateur depuis l'interface, puis mettre le champ 'is_admin' à 1 dans votre application de gestion de base de données

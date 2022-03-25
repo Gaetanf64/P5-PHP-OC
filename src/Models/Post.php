@@ -41,40 +41,24 @@ class Post
             $chapo = substr($chapo, 0, 150);
         }
 
-        //$chapo = strtolower($chapo);
         $this->chapo = ucfirst($chapo);
         return $this;
     }
 
     public function setContent(String $content)
     {
-        /*if (mb_strlen($content) > 20) {
-            $content = substr($content, 0, 20);
-        }*/
-
-        //$content = strtolower($content);
         $this->content = $content;
         return $this;
     }
 
     public function setDate_creation(String $date_creation)
     {
-        /*if (mb_strlen($date_creation) > 30) {
-            $date_creation = substr($date_creation, 0, 30);
-        }
-        
-        $date_creation = strtolower($date_creation);*/
         $this->date_creation = $date_creation;
         return $this;
     }
 
     public function setDate_update(String $date_update)
     {
-        /*if (mb_strlen($date_update) > 30) {
-            $date_update = substr($date_update, 0, 30);
-        }
-
-        $date_update = strtolower($date_update);*/
         $this->date_update = $date_update;
         return $this;
     }
@@ -99,9 +83,6 @@ class Post
 
     public function setUsername(String $username)
     {
-        // if ($id_user > 0) {
-        //     $this->id_user = $id_user;
-        // }
         $this->username = $username;
         return $this;
     }

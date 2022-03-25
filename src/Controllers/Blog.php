@@ -15,7 +15,10 @@ require_once ROOT . 'src/Models/CommentManager.php';
 class Blog extends MainController
 {
 
-
+    /**
+     * Affiche la page de tous les posts
+     * 
+     */
     public function index()
     {
         $postManager = new PostManager();
@@ -23,29 +26,33 @@ class Blog extends MainController
         $this->render('pages/blog', ['posts' => $posts]);
     }
 
+    /**
+     * Affiche le détail d'un post
+     * 
+     */
     public function post($id_article)
     {
         // On instancie le modèle
         $postManager = new PostManager();
         $commentManager = new CommentManager();
 
-        // On va chercher
-        // if à réaliser
+        // On va chercher le post et les commentaires
         $post = $postManager->read($id_article);
         $comments = $commentManager->readComment($id_article);
+
+        //PARTIE AJOUT D'UN COMMENTAIRE
 
         //si le formualaire d'ajout est posté
         if (!empty($_POST)) {
 
+            //On instancie la date
             $now = new DateTime();
 
             // Si le formulaire d'ajout du Post est posté
             if (isset($_POST['addComment'])) {
-                // crée un nouvel objet Post
-                // avec les valeurs recue en POST
+                //On récupère les valeurs des champs du commentaire
                 $newComment = new Comment();
                 $newComment->setContent_comment(htmlspecialchars(filter_input(INPUT_POST, 'content_comment')));
-                //$newComment->setIs_actived($_POST['is_actived']);
                 $newComment->setDate_creation($now->format('Y-m-d H:i:s'));
                 $newComment->setDate_update($now->format('Y-m-d H:i:s'));
                 $newComment->setId_user(filter_input(INPUT_POST, 'id_user'));
@@ -53,9 +60,10 @@ class Blog extends MainController
 
                 $_POST = array(); //clear
 
-
+                //On ajoute le commentaire dans la db
                 $commentManager->addComment($newComment);
 
+                //On redirige vers la page des posts
                 return header('Location:' . local . 'blog');
             } else {
                 $this->render('pages/post', ['post' => $post, 'comments' => $comments]);

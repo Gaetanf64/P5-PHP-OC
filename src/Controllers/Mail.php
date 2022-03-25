@@ -23,13 +23,15 @@ require_once('env.php');
 class Mail extends MainController
 {
 
+    /**
+     * Envoi un mail par le formulaire de contact
+     */
     public function sendMail()
     {
-
-
+        //On instancie PHPMailer
         $mail = new PHPMailer(true);
 
-
+        //Si le formulaire de contact est rempli
         if (!empty($_POST['surname']) && !empty(filter_input(INPUT_POST, 'firstname')) && !empty(filter_input(INPUT_POST, 'email')) && !empty(filter_input(INPUT_POST, 'message'))) {
 
             try {
@@ -68,79 +70,58 @@ class Mail extends MainController
 
                 $_POST = array(); //clear
 
-
-
-                //header('location:./#form');
-                //echo "<p>Votre message a bien été envoyé</p>";
-                //$valid = "<p class='haut'>Votre message a bien été envoyé</p>";
-
+                //On redirige vers la page d'accueil
                 return header('Location: ' . local);
             } catch (Exception $e) {
+                //Si mail non envoyé
                 echo "<p class='haut'>Message non envoyé. Veuillez recommencer</p>";
             }
         }
     }
 
+    /**
+     * Envoi du mail si mot de passe oublié
+     */
     public function forgotPassword()
     {
-
-
-        //$this->render('auth/forgotPassword');
-
+        //On instancie PHPMailer
         $mail = new PHPMailer(true);
 
+        //On instancie le manager du user
         $userManager = new UserManager();
-        // if (isset($_POST['forgotPassword'])) {
-        //     $token = uniqid();
-        //     //$url = local . "auth/newPassword/$token";
 
-        //     // $message = "Bonjour : $url";
-        //     //     $headers = "Content-Type: text/plain; charset='utf-8'" . "";
-
-        //     //     if (mail($_POST['email'], "Mot de passe oublié", $message, $headers)) {
-        //     $userManager = new UserManager();
-
-        //     //         $user = $userManager->getByUsername($_POST['email']);
-        //     $userManager->forgotPassword($token, $_POST['forgotPassword']);
-
-        //     //         echo "Mail envoyé";
-        //     //     }
-        //     // }
-        //     // if (isset($_GET['token']) && $_GET['token'] !== "") {
-        //     //     $userManager = new UserManager();
-        // }
-
+        //Si le formualaire d'oubli de mot de passe est soumis
         if (isset($_POST['forgotPassword'])) {
             try {
                 //Configuration
                 //Je veux des infos de debug
                 //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+
+                //On récupère l'email rentré par l'utilisateur
                 $email = $userManager->getByEmail(filter_input(INPUT_POST, 'emailPassword'));
 
+                //Si erreur
                 if ($email === false) {
                     $_SESSION['erreur'] = 'error';
+                    //On redirige vers la page d'oubli de mot de passe
                     return header('Location: ' . local . 'auth/forgotPassword');
                 } else {
+                    //On génère un token aléatoire
                     $token = uniqid();
 
+                    //On crée la variable qui renverra vers l'url pour la réintialisation du mot de passe
                     $url = local . "auth/newPassword/$token";
-                    //$user = $userManager->getByUsername($_POST['email']);
 
 
-
-                    // crée un nouvel objet Post
-                    // avec les valeurs recue en POST
+                    //On instancie l'utilisateur et on récupère le token
                     $newUserPass = new User();
                     $newUserPass->setToken($token);
 
                     //$_POST = array(); //clear
 
+                    //On envoi les données dans la db du UserManager
                     $userManager->forgotPassword($newUserPass, filter_input(INPUT_POST, 'emailPassword'));
 
-
-                    // } else {
-                    //     $this->render('admin/addPost');
-                    // }
 
                     //SMTP Configuration
                     $mail->isSMTP();
@@ -154,15 +135,12 @@ class Mail extends MainController
                     //Charset
                     $mail->Charset = "utf-8";
 
-
-
                     //Recipients
                     $mail->addAddress(filter_input(INPUT_POST, 'emailPassword'));
 
                     //Sender
                     $mail->setFrom('no-reply@site.fr', 'Reintialisation mot de passe');
 
-                    //$url = "http://localhost/php/OC/blog/auth/newPassword";
 
                     //Content
                     $mail->Subject = 'Reintialisation du mot de passe';
@@ -174,13 +152,11 @@ class Mail extends MainController
 
                     $_POST = array(); //clear
 
-                    //header('location:./#form');
-                    //echo "<p>Votre message a bien été envoyé</p>";
-                    //$valid = "<p class='haut'>Votre message a bien été envoyé</p>";
-
+                    //On redirige vers la page d'accueil
                     return header('Location: ' . local);
                 }
             } catch (Exception $e) {
+                //Si mail non envoyé
                 echo "<p class='haut'>Mail non envoyé. Veuillez recommencer</p>";
             }
         }

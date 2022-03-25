@@ -1,5 +1,3 @@
-<?php //require_once(ROOT . 'src/Views/home/mail.php'); 
-?>
 <form id="form" method="post" action=<?= local . "mail/sendMail" ?>>
     <input required type="text" name="surname" placeholder="Nom" class="input1" />
     <input required type="text" name="firstname" placeholder="Prenom" class="input1" />

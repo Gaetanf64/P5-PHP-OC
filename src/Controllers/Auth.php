@@ -13,60 +13,53 @@ require_once ROOT . 'src/Models/User.php';
 
 class Auth extends MainController
 {
+    /**
+     * Affiche la page de login
+     */
     public function login()
     {
         $this->render('auth/login');
     }
 
+    /**
+     * Connexion de l'utlisateur
+     */
     public function loginPost()
     {
+        //On instancie le manager
         $userManager = new UserManager();
 
-
-        //$userManager->password;
-        // var_dump($userManager->password);
-        // exit;
-        //$user = new User();
-        //$userManager->getByUsername($_POST['username']);
+        //On récupère l'username de l'utilisateur
         $user = $userManager->getByUsername(filter_input(INPUT_POST, 'username'));
 
-        // var_dump($user['password']);
-        // exit;
-
+        //Si erreur
         if ($user === false) {
             $_SESSION['erreur'] = 'error';
+            //On redirige vers la page de login
             return header('Location: ' . local . 'auth/login');
-            // $user = $userManager->getByUsername($_POST['username']);
         } else {
+            //Si le password est soumis
             if (isset($user['password'])) {
+                //On vérifie si le hash du password est valide
                 if (password_verify($_POST['password'], $user['password'])) {
+                    //On met en place la Session du user
                     $_SESSION['auth'] = $user['is_admin'];
                     $_SESSION['id_user'] = $user['id_user'];
                     $_SESSION['username'] = $user['username'];
-                    //return header('Location: ' . local . 'admin/addPost?success=true');
+
+                    //On redirige vers la page d'accueil
                     return header('Location: ' . local);
                 } else {
                     $_SESSION['erreur'] = 'error';
                     return header('Location: ' . local . 'auth/login');
-                    //$errorPassword = '<p>Mot de passe invalide. Veuillez recommencer</p>';
                 }
             }
         }
-
-        // var_dump($mdp);
-        // exit;
-        // $is_admin = $userManager->getByUsername($_POST['username']);
-
-        //if isset $mdp[''password]
-
-        //else {
-        //     return header('Location: ' . local . 'auth/login');
-        // // }
-        // var_dump(password_verify($_POST['password'], $mdp['password']));
-        // exit;
-        //$this->render('auth/login');
     }
 
+    /**
+     * Fonction de déconnexion
+     */
     public function logout()
     {
         session_destroy();
@@ -74,51 +67,48 @@ class Auth extends MainController
         return header('Location:' . local);
     }
 
+    /**
+     * Affiche la page de mot de passe oublié
+     */
     public function forgotPassword()
     {
         $this->render('auth/forgotPassword');
     }
 
 
+    /**
+     * Affiche la page de nouveau mot de passe
+     */
     public function newPassword($token)
     {
+        //Affiche la vue
         $this->render('auth/newPassword');
 
+        //On instancie la date
         $now = new DateTime();
-
+        //On instancie le manager du user
         $userManager = new UserManager();
 
-        // $passUpdate = $userManager->read($id_article);
+        //Si le formulaire est soumis
         if (isset($_POST['confirmer'])) {
             $newPass = new User();
 
+            //On hash le nouveau mot de passe renté
             $hash = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
 
+            //On met à jour le password
             $newPass->setPassword($hash);
             $newPass->setDate_update($now->format('Y-m-d H:i:s'));
 
+            //On envoi dans la db
             $userManager->newPassword($token, $newPass);
 
             return header('Location:' . local);
-            // $postManager = new PostManager();
-
-            // $postUpdate = $postManager->read($id_article);
         }
     }
 
     public function register()
     {
-
-
-
-        // $passUpdate = $userManager->read($id_article);
-        // if (isset($_POST['confirmer'])) {
-        //     //$hash = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
-        //     //$userManager->newPassword($_POST['newPassword']);
-        //     $postManager = new PostManager();
-
-        //     $postUpdate = $postManager->read($id_article);
-        // }
 
         $this->render('auth/register');
 
@@ -135,9 +125,10 @@ class Auth extends MainController
                 if ($verifyUser['nbLogin'] === '0') {
                     //Si le mot de passe confirmé est valide
                     if ($_POST['password'] == $_POST['confirmPassword']) {
+                        //On hash le password
                         $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                        // crée un nouvel objet Post
-                        // avec les valeurs recue en POST
+
+                        //On met à jour les données
                         $newUser = new User();
                         $newUser->setEmail(htmlspecialchars(filter_input(INPUT_POST, 'email')));
                         $newUser->setUsername(htmlspecialchars(filter_input(INPUT_POST, 'username')));
@@ -147,14 +138,15 @@ class Auth extends MainController
 
                         $_POST = array(); //clear
 
+                        //On envoi dans la db
                         $userManager->newUser($newUser);
 
                         return header('Location:' . local);
-                    } else {
+                    } else { //Si password non valide
                         $_SESSION['erreur'] = 'error';
                         return header('Location: ' . local . 'auth/register');
                     }
-                } else {
+                } else { //Si user existe deja
                     $_SESSION['erreur'] = 'verifyUser';
                     return header('Location: ' . local . 'auth/register');
                 }
@@ -164,14 +156,15 @@ class Auth extends MainController
         }
     }
 
+    /**
+     * Affiche la page de profil
+     */
     public function editProfil($id_user)
     {
-
-
+        //On instancie le manager
         $userManager = new UserManager();
 
-        //$id_user =  $_SESSION['id_user'];
-
+        //On récupère les données du user
         $userUpdate = $userManager->readByUser($id_user);
 
         //si le formualaire d'ajout est posté
@@ -181,21 +174,14 @@ class Auth extends MainController
 
             // Si le formulaire d'ajout du Post est posté
             if (isset($_POST['editBtn'])) {
-                // mise a jour de l' objet Post
-                // avec les valeurs recue en POST
-                //$postUpdate = new Post();
-                //$hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
+                //On met à jour les données
                 $userUpdate->setEmail(htmlspecialchars(filter_input(INPUT_POST, 'email')));
                 $userUpdate->setUsername(htmlspecialchars(filter_input(INPUT_POST, 'username')));
-                //$userUpdate->setPassword($hash);
-                //$postUpdate->setDate_creation($now->format('Y-m-d H:i:s'));
                 $userUpdate->setDate_update($now->format('Y-m-d H:i:s'));
-                //$userUpdate->setId_user($_POST['id_user']);
 
                 $_POST = array(); //clear
 
-
+                //On envoi dans la db
                 $userManager->updateForUser($userUpdate);
 
                 return header('Location:' . local);
@@ -204,6 +190,7 @@ class Auth extends MainController
             }
         }
 
+        //On génère la vue
         $this->render('auth/profil', ['userUpdate' => $userUpdate]);
     }
 }

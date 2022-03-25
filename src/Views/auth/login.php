@@ -14,7 +14,7 @@
             <input required type="password" name="password" placeholder="Mot de passe" maxlength='255' class="input1" />
             <button type="submit" class="btnCo haut">Connexion</button>
         </form>
-        <!-- <p class="haut droiteAnnuler"><a class="annuler" href=<?= filter_input(INPUT_SERVER, 'HTTP_REFERER') ?>>Annuler</a></p> -->
+
         <?php
         if (isset($_SESSION['erreur']) && ($_SESSION['erreur']) === 'error') :
         ?>

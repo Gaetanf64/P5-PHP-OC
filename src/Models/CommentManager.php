@@ -13,23 +13,9 @@ require_once ROOT . 'src/Models/Comment.php';
 
 class CommentManager extends MainModel
 {
-
-    //private  $db;
-
-    public function __construct()
-    {
-        // $this->db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-
-        // //Errors
-        // $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-
-    }
-
-    // public function read($id_comment)
-    // {
-    //     return $this->readOne('comment', 'App\Models\Comment', $id_comment);
-    // }
-
+    /**
+     * Permet de lire les commentaires d'un article
+     */
     public function readComment($id_article)
     {
         $this->setDb();
@@ -52,26 +38,11 @@ class CommentManager extends MainModel
         }
 
         return $comments;
-
-        //$req->closeCursor();
-
-        // $this->setDb();
-
-        // $sql = "SELECT * FROM comment,user WHERE id_article = :id_article ORDER BY comment.date_update DESC";
-        // $req = $this->db->prepare($sql);
-        // $req->bindValue('id_article', $id_article, PDO::PARAM_INT);
-        // $req->execute();
-
-        // $data = $req->fetch(PDO::FETCH_ASSOC);
-        // $comments = new Comment($data);
-
-        // var_dump($comments);
-        // exit;
-
-        // return $comments;
     }
 
-
+    /**
+     * Ajoute un commentaire
+     */
     public function addComment($comment)
     {
         $this->setDb();

@@ -8,11 +8,11 @@ require_once ROOT . 'src/Controllers/MainController.php';
 
 class Home extends MainController
 {
-
+    /**
+     * Afficher la page d'accueil
+     */
     public function index()
     {
-        //$this->is_User();
-
         $this->render('home/index', []);
     }
 }

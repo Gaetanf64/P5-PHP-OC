@@ -13,18 +13,10 @@ require_once ROOT . 'src/Models/User.php';
 
 class PostManager extends MainModel
 {
-
-    //private  $db;
-
-    public function __construct()
-    {
-        // $this->db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
-
-        // //Errors
-        // $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
-
-    }
-
+    /**
+     * Permet de lire un article
+     * 
+     */
     public function read($id_article)
     {
         $this->setDb();
@@ -40,26 +32,13 @@ class PostManager extends MainModel
         return $post;
     }
 
+    /**
+     * Permet de lire tous les articles
+     * 
+     */
     public function readAll()
     {
         $this->setDb();
-
-
-        // Tableau va recuillir la collection d'objets Clients
-        // $posts = [];
-
-        // // Requete SQL et Execution
-        // $sql = "SELECT * FROM post ORDER BY date_update desc";
-        // $res = $this->db->query($sql);
-
-        // // Boucle sur chaque enregistrement
-        // while ($post = $res->fetch()) {
-        //     // Ajout d'un nouveau client à la collection
-        //     $posts[] = new Post($post);
-        // }
-
-        // // Retourne la collection de clients
-        // return $posts;
 
         $posts = [];
         $req = $this->db->prepare(
@@ -70,31 +49,22 @@ class PostManager extends MainModel
         );
         $req->execute();
 
-        // $posts = $req->fetchAll(PDO::FETCH_ASSOC);
-
-        // return $posts;
-
-
-
-        // $posts[] = $req->fetchAll(PDO::FETCH_ASSOC, __NAMESPACE__ . '\Post');
-
-        // return $posts;
-
         //on crée la variable data qui
         //va cobntenir les données
         while ($post = $req->fetch(PDO::FETCH_ASSOC)) {
 
             // posts contiendra les données sous forme d'objets
             $posts[] = new Post($post);
-            //$posts['username'] = $post['username'];
-            //$users[] = new User($post);
         }
         return $posts;
-        //return $users;
 
         $req->closeCursor();
     }
 
+    /**
+     * Permet de créer un article
+     * 
+     */
     public function create($post)
     {
 
@@ -119,6 +89,10 @@ class PostManager extends MainModel
     }
 
 
+    /**
+     * Met à jour un article
+     * 
+     */
     public function update($post)
     {
         $sql = "UPDATE post SET 
@@ -141,6 +115,10 @@ class PostManager extends MainModel
         $req->execute();
     }
 
+    /**
+     * Supprime un article
+     * 
+     */
     public function delete($post)
     {
         $sql = "DELETE FROM post WHERE id_article = :id_article";

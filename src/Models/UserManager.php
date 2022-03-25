@@ -13,9 +13,12 @@ require_once ROOT . 'src/Models/User.php';
 
 class UserManager extends MainModel
 {
+    /**
+     * Permet de sélectionner le user recherché
+     * 
+     */
     public function getByUsername($username)
     {
-
         $this->setDb();
 
         $sql = "SELECT * FROM user WHERE username = :username";
@@ -24,19 +27,14 @@ class UserManager extends MainModel
         $req->execute();
 
         $data = $req->fetch(PDO::FETCH_ASSOC);
-        //$user = new User($data);
-
-        // $mdp = $user->password;
-
-        // $is_admin = $user->is_admin;
-
-        // return $mdp;
-        // return $is_admin;
-
 
         return $data;
     }
 
+    /**
+     * Permet de sélectionner l'email d'un utilisateur
+     * 
+     */
     public function getByEmail($email)
     {
 
@@ -48,19 +46,14 @@ class UserManager extends MainModel
         $req->execute();
 
         $data = $req->fetch(PDO::FETCH_ASSOC);
-        //$user = new User($data);
-
-        // $mdp = $user->password;
-
-        // $is_admin = $user->is_admin;
-
-        // return $mdp;
-        // return $is_admin;
-
 
         return $data;
     }
 
+    /**
+     * Met à jour le token pour le mot de passe oublié
+     * 
+     */
     public function forgotPassword($token, $email)
     {
         $this->setDb();
@@ -70,11 +63,12 @@ class UserManager extends MainModel
         $req->bindValue(':token', $token->getToken(), PDO::PARAM_STR);
         $req->bindValue(':email', $email, PDO::PARAM_STR);
         $req->execute();
-
-        //$data = $req->fetch(PDO::FETCH_ASSOC);
-        //return $data;
     }
 
+    /**
+     * Met à jour le nouveau mot de passe et le token
+     * 
+     */
     public function newPassword($token, $newPassword)
     {
         $this->setDb();
@@ -92,12 +86,12 @@ class UserManager extends MainModel
         $req2->bindValue(':token', NULL, PDO::PARAM_STR);
         $req2->bindValue(':password', $newPassword->getPassword(), PDO::PARAM_STR);
         $req2->execute();
-
-        // $data = $req->fetch(PDO::FETCH_ASSOC);
-
-        //return $data;
     }
 
+    /**
+     * Permet de vérifier qu'un user existe déjà
+     * 
+     */
     public function verifyUser($username, $email)
     {
         $this->setDb();
@@ -110,11 +104,12 @@ class UserManager extends MainModel
 
         $data = $req->fetch(PDO::FETCH_ASSOC);
         return $data;
-        // $user = new User($data);
-
-        // return $user;
     }
 
+    /**
+     * Créer un nouvel utilisateur
+     * 
+     */
     public function newUser($user)
     {
         $this->setDb();
@@ -138,6 +133,10 @@ class UserManager extends MainModel
         }
     }
 
+    /**
+     * Lire par utilisateur pour la page profil
+     * 
+     */
     public function readByUser($id_user)
     {
         $this->setDb();
@@ -153,6 +152,10 @@ class UserManager extends MainModel
         return $user;
     }
 
+    /**
+     * Met à jour les données du user pour la page profil
+     * 
+     */
     public function updateForUser($user)
     {
         $sql = "UPDATE user SET 

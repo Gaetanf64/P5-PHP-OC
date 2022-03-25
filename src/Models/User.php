@@ -26,11 +26,6 @@ class User
 
     public function setEmail(String $email)
     {
-        //     if (mb_strlen($email) > 50) {
-        //         $email = substr($email, 0, 50);
-        //     }
-
-        //     $email = strtolower($email);
         $this->email = $email;
         return $this;
     }
@@ -42,7 +37,7 @@ class User
         }
 
         $this->username = $username;
-        //$this->username = ucfirst($username);
+
         return $this->username;
     }
 
@@ -53,54 +48,34 @@ class User
         }
 
         $this->password = $password;
-        // $this->password = ucfirst($password);
+
         return $this->password;
     }
 
     public function setIs_admin(Int $is_admin)
     {
-        /*if (mb_strlen($content) > 20) {
-            $content = substr($content, 0, 20);
-        }*/
-
-        //$is_admin = strtolower($is_admin);
         $this->is_admin = $is_admin;
         return $this->is_admin;
     }
 
     public function setDate_creation(String $date_creation)
     {
-        /*if (mb_strlen($date_creation) > 30) {
-            $date_creation = substr($date_creation, 0, 30);
-        }
-        
-        $date_creation = strtolower($date_creation);*/
         $this->date_creation = $date_creation;
         return $this;
     }
 
     public function setDate_update(String $date_update)
     {
-        /*if (mb_strlen($date_update) > 30) {
-            $date_update = substr($date_update, 0, 30);
-        }
-
-        $date_update = strtolower($date_update);*/
         $this->date_update = $date_update;
         return $this;
     }
 
     public function setToken($token)
     {
-        /*if (mb_strlen($content) > 20) {
-            $content = substr($content, 0, 20);
-        }*/
         if ($token !== NULL) {
             $this->token = $token;
             return $this->token;
         }
-        //$is_admin = strtolower($is_admin);
-
     }
 
 

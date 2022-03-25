@@ -30,40 +30,24 @@ class Comment
             $content_comment = substr($content_comment, 0, 50);
         }
 
-        //$content_comment = strtolower($content_comment);
         $this->content_comment = ucfirst($content_comment);
         return $this;
     }
 
     public function setIs_actived(Int $is_actived)
     {
-        /*if (mb_strlen($content_comment) > 20) {
-            $content_comment = substr($content_comment, 0, 20);
-        }*/
-
-        //$is_actived = strtolower($is_actived);
         $this->is_actived = $is_actived;
         return $this->is_actived;
     }
 
     public function setDate_creation(String $date_creation)
     {
-        /*if (mb_strlen($date_creation) > 30) {
-            $date_creation = substr($date_creation, 0, 30);
-        }
-        
-        $date_creation = strtolower($date_creation);*/
         $this->date_creation = $date_creation;
         return $this;
     }
 
     public function setDate_update(String $date_update)
     {
-        /*if (mb_strlen($date_update) > 30) {
-            $date_update = substr($date_update, 0, 30);
-        }
-
-        $date_update = strtolower($date_update);*/
         $this->date_update = $date_update;
         return $this;
     }
@@ -96,9 +80,6 @@ class Comment
 
     public function setUsername(String $username)
     {
-        // if ($id_user > 0) {
-        //     $this->id_user = $id_user;
-        // }
         $this->username = $username;
         return $this;
     }
