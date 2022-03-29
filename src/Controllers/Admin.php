@@ -19,7 +19,7 @@ class Admin extends MainController
     public function addPost()
     {
         //Page accessible unique à l'admin
-        $this->is_Admin();
+        $this->isAdmin();
 
         //Génère la vue de l'ajout d'un post
         $this->render('admin/addPost');
@@ -61,7 +61,7 @@ class Admin extends MainController
     public function editPost($id_article)
     {
         //Accessible que pour l'admin
-        $this->is_Admin();
+        $this->isAdmin();
 
         //On instancie le manager
         $postManager = new PostManager();

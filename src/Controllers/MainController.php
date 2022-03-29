@@ -38,7 +38,7 @@ abstract class MainController
     /**
      * Accès que pour l'admin
      */
-    protected function is_Admin()
+    protected function isAdmin()
     {
         //Si is_admin différent de 1
         if (!isset($_SESSION['auth']) && $_SESSION['auth'] !== '1') {
