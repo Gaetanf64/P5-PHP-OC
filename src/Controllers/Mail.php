@@ -161,12 +161,4 @@ class Mail extends MainController
             }
         }
     }
-
-    /**
-     * Envoi du mail de confirmation du compte
-     * 
-     */
-    public function confirmRegister()
-    {
-    }
 }
