@@ -22,6 +22,13 @@
             <?php session_destroy() ?>
         <?php endif ?>
 
+        <?php
+        if (isset($_SESSION['erreur']) && ($_SESSION['erreur']) === 'invalid') :
+        ?>
+            <p class="error haut">Compte invalide. Veuillez confirmer votre compte avant de vous connecter</p>
+            <?php session_destroy() ?>
+        <?php endif ?>
+
         <section>
 
             <div class="haut flex space flexResponsive">

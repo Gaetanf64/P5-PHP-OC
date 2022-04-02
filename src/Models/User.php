@@ -14,6 +14,7 @@ class User
     protected $date_update;
     protected $id_user;
     protected $token;
+    public $is_activated;
 
 
     public function __construct($data = false)
@@ -126,6 +127,18 @@ class User
     public function getId_user()
     {
         return $this->id_user;
+    }
+
+    public function getIs_activated()
+    {
+        return $this->is_activated;
+    }
+
+    public function setIs_activated($is_activated)
+    {
+        $this->is_activated = $is_activated;
+
+        return $this;
     }
 
 

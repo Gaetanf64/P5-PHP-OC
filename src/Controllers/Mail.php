@@ -120,7 +120,7 @@ class Mail extends MainController
                     //$_POST = array(); //clear
 
                     //On envoi les données dans la db du UserManager
-                    $userManager->forgotPassword($newUserPass, filter_input(INPUT_POST, 'emailPassword'));
+                    $userManager->generateToken($newUserPass, filter_input(INPUT_POST, 'emailPassword'));
 
 
                     //SMTP Configuration
@@ -160,5 +160,13 @@ class Mail extends MainController
                 echo "<p class='haut'>Mail non envoyé. Veuillez recommencer</p>";
             }
         }
+    }
+
+    /**
+     * Envoi du mail de confirmation du compte
+     * 
+     */
+    public function confirmRegister()
+    {
     }
 }

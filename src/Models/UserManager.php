@@ -51,10 +51,10 @@ class UserManager extends MainModel
     }
 
     /**
-     * Met à jour le token pour le mot de passe oublié
+     * Met à jour le token pour le mot de passe oublié et la confirmation du compte
      * 
      */
-    public function forgotPassword($token, $email)
+    public function generateToken($token, $email)
     {
         $this->setDb();
 
@@ -89,6 +89,28 @@ class UserManager extends MainModel
     }
 
     /**
+     * Valide le compte du nouveau user
+     * 
+     */
+    public function confirmDefinitive($token, $newUser)
+    {
+        $this->setDb();
+
+        $sql = "UPDATE user SET is_activated = :is_activated, date_update = :date_update WHERE token = :token";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(':is_activated', $newUser->getIs_activated(), PDO::PARAM_STR);
+        $req->bindValue(':token', $token, PDO::PARAM_STR);
+        $req->bindValue(':date_update', $newUser->getDate_update(), PDO::PARAM_STR);
+        $req->execute();
+
+        $sql2 = "UPDATE user SET token = :token WHERE username = :username";
+        $req2 = $this->db->prepare($sql2);
+        $req2->bindValue(':token', NULL, PDO::PARAM_STR);
+        $req2->bindValue(':username', $newUser->getUsername(), PDO::PARAM_STR);
+        $req2->execute();
+    }
+
+    /**
      * Permet de vérifier qu'un user existe déjà
      * 
      */
@@ -114,8 +136,8 @@ class UserManager extends MainModel
     {
         $this->setDb();
 
-        $sql = "INSERT INTO user (email,username,password,token,is_admin,date_creation,date_update)
-        VALUES (:email,:username,:password,:token,:is_admin,:date_creation,:date_update)";
+        $sql = "INSERT INTO user (email,username,password,token,is_admin,date_creation,date_update,is_activated)
+        VALUES (:email,:username,:password,:token,:is_admin,:date_creation,:date_update,:is_activated)";
 
         $req = $this->db->prepare($sql);
         $req->bindValue('email', $user->getEmail(), PDO::PARAM_STR);
@@ -125,6 +147,7 @@ class UserManager extends MainModel
         $req->bindValue('is_admin', 0, PDO::PARAM_INT);
         $req->bindValue('date_creation', $user->getDate_creation(), PDO::PARAM_STR);
         $req->bindValue('date_update', $user->getDate_update(), PDO::PARAM_STR);
+        $req->bindValue('is_activated', 0, PDO::PARAM_INT);
 
         $result = $req->execute();
         if ($result) {
